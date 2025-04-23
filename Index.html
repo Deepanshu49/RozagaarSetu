@@ -180,6 +180,26 @@
         </div>
     </div>
 
+    <!-- About Us Modal -->
+<div class="modal" id="about-modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>About Us</h2>
+        <p>RozgaarSetu is a platform dedicated to connecting skilled daily wage workers with those who need them. We aim to empower workers by providing better job opportunities and helping employers find reliable help.</p>
+    </div>
+</div>
+
+<!-- Contact Us Modal -->
+<div class="modal" id="contact-modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Contact Us</h2>
+        <p>You can reach us at <a href="mailto:support@rozgaarsetu.com">support@rozgaarsetu.com</a> or call us at +91-9876543210. We're here to help you!</p>
+    </div>
+</div>
+
+    
+
     <!-- Signup Modal -->
     <div class="modal" id="signup-modal">
         <div class="modal-content">
@@ -281,5 +301,53 @@
 
      <script src="scripts.js"></script>
     <script src="scripts2.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const aboutLink = document.querySelector('a[href="about.html"]');
+            const contactLink = document.querySelector('a[href="contact.html"]');
+            const modals = document.querySelectorAll('.modal');
+            const closeButtons = document.querySelectorAll('.close-modal');
+        
+            // Helper to open a modal
+            function openModal(id) {
+                document.getElementById(id).style.display = "block";
+            }
+        
+            // Helper to close all modals
+            function closeAllModals() {
+                modals.forEach(modal => modal.style.display = "none");
+            }
+        
+            // Click listeners
+            if (aboutLink) {
+                aboutLink.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    openModal("about-modal");
+                });
+            }
+        
+            if (contactLink) {
+                contactLink.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    openModal("contact-modal");
+                });
+            }
+        
+            // Close modals on button click
+            closeButtons.forEach(btn => {
+                btn.addEventListener("click", closeAllModals);
+            });
+        
+            // Close modal on outside click
+            window.addEventListener("click", function (e) {
+                modals.forEach(modal => {
+                    if (e.target === modal) {
+                        modal.style.display = "none";
+                    }
+                });
+            });
+        });
+        </script>
+        
 </body>
 </html>

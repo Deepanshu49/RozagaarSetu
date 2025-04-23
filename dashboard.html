@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RozgaarSetu - User Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        
+        .logo-icon span {
+            color: white;
+            font-size: 16px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2A9D8F;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2A9D8F;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .lang-selector {
+            color: #2A9D8F;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .lang-icon {
+            margin-right: 5px;
+        }
+        
+        .login-btn, .user-profile {
+            padding: 8px 16px;
+            background-color: transparent;
+            border: 1px solid #2A9D8F;
+            color: #2A9D8F;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .login-btn:hover {
+            background-color: #2A9D8F;
+            color: white;
+        }
+        
+        .user-profile {
+            background-color: #2A9D8F;
+            color: white;
+        }
+        
+        .user-profile:hover {
+            background-color: #218175;
+        }
+        
+        .user-icon {
+            margin-right: 8px;
+        }
+        
+        .hero-section {
+            height: calc(100vh - 70px);
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('');
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .background-visual {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #a8e6cf, #2A9D8F);
+            clip-path: polygon(0 50%, 100% 30%, 100% 100%, 0% 100%);
+            z-index: -1;
+        }
+        
+        .mountain-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDQwIDMyMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PHBhdGggZmlsbD0iIzJBOUQ4RiIgZmlsbC1vcGFjaXR5PSIwLjYiIGQ9Ik0wLDMyMCBDMjQwLDI0MCA0ODAsODAgNzIwLDgwIEMxMDAwLDgwIDEyMDAsMjAwIDE0NDAsMzIwIFoiPjwvcGF0aD48cGF0aCBmaWxsPSIjMkE5RDhGIiBmaWxsLW9wYWNpdHk9IjAuNCIgZD0iTTAsNTAwIEMzNjAsNDAwIDcyMCw0MDAgMTA4MCw0MDAgQzEyNjAsNDAwIDE0NDAsMzYwIDE0NDAsMzIwIEwwLDMyMCBaIj48L3BhdGg+PHBhdGggZmlsbD0iIzJBOUQ4RiIgZmlsbC1vcGFjaXR5PSIwLjIiIGQ9Ik0wLDMyMCBDMTgwLDI0MCAzNjAsODAgNTQwLDAgQzcyMCwtODAgOTAwLDgwIDEwODAsMTYwIEMxMjYwLDI0MCAxNDQwLDI0MCAxNDQwLDMyMCBaIj48L3BhdGg+PC9zdmc+');
+            background-size: cover;
+            z-index: -1;
+        }
+        
+        .forest-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDQwIDE2MCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PHBhdGggZmlsbD0iIzIwNjU1RCIgZD0iTTAsMTYwIEMxMjAsMTIwIDI0MCw4MCAzNjAsNjAgQzQ4MCw0MCA2MDAsNjAgNzIwLDYwIEM4NDAsMjAgOTYwLDIwIDEwODAsNjAgQzEyMDAsMTAwIDEzMjAsMTQwIDE0NDAsMTYwIFoiPjwvcGF0aD48L3N2Zz4=');
+            background-size: cover;
+            z-index: -1;
+        }
+        
+        .fern-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 400px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMzAwIj48cGF0aCBmaWxsPSIjMjA2NTVEIiBkPSJNMTAwLDAgQzE1MCw1MCAyMDAsMTAwIDIwMCwxNTAgQzIwMCwyMDAgMTUwLDI1MCAxMDAsMzAwIEMxNTAsMjUwIDIwMCwyMDAgMjAwLDE1MCBDMjAwLDEwMCAxNTAsNTAgMTAwLDAgWiI+PC9wYXRoPjwvc3ZnPg==');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: -1;
+            opacity: 0.8;
+        }
+        
+        .fern-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 300px;
+            height: 400px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMzAwIj48cGF0aCBmaWxsPSIjMjA2NTVEIiBkPSJNMTAwLDAgQzUwLDUwIDAsMTAwIDAsMTUwIEMwLDIwMCA1MCwyNTAgMTAwLDMwMCBDNTAsMjUwIDAsMjAwIDAsMTUwIEMwLDEwMCA1MCw1MCAxMDAsMCBaIj48L3BhdGg+PC9zdmc+');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: -1;
+            opacity: 0.8;
+        }
+        
+        .dashboard-content {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            color: #359381;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dashboard-header p {
+            font-size: 1.2rem;
+            color: #359381;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .dashboard-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(42, 157, 143, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .card-icon i {
+            font-size: 24px;
+            color: #2A9D8F;
+        }
+        
+        .dashboard-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .dashboard-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .card-stats {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .card-action {
+            color: #2A9D8F;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .card-action:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .dashboard-header h1 {
+                font-size: 2rem;
+            }
+            
+            .dashboard-header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <span>&#x2672;</span>
+            </div>
+            <div class="logo-text">RozgaarSetu</div>
+        </a>
+        
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Profile</a>
+        </div>
+        
+        <div class="nav-right">
+            <div class="lang-selector">
+                <span class="lang-icon">&#127760;</span>
+                हिंदी
+            </div>
+            <a href="#" class="user-profile">
+                <span class="user-icon"><i class="fas fa-user"></i></span>
+                <span id="username">Rahul</span>
+            </a>
+        </div>
+    </nav>
+    
+    <div class="hero-section">
+        <div class="background-visual"></div>
+        <div class="mountain-bg"></div>
+        <div class="forest-decoration"></div>
+        <div class="fern-right"></div>
+        <div class="fern-left"></div>
+        
+        <div class="dashboard-content">
+            <div class="dashboard-header">
+                <h1>Welcome to Your Dashboard</h1>
+                <p>Smart Solutions for a Brighter Future.</p>
+            </div>
+            
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="card-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>My Applications</h3>
+                    <p>Track all your job applications and their current status.</p>
+                    <div class="card-footer">
+                        <div class="card-stats">5 active applications</div>
+                        <div class="card-action">View All</div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="dashboard-card">
+                    <div class="card-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Notifications</h3>
+                    <p>Stay updated with latest job matches and application statuses.</p>
+                    <div class="card-footer">
+                        <div class="card-stats">3 new notifications</div>
+                        <div class="card-action">View All</div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-icon">
+                        <i class="fas fa-bookmark"></i>
+                    </div>
+                    <h3>Saved Jobs</h3>
+                    <p>Quick access to jobs you've saved for later application.</p>
+                    <div class="card-footer">
+                        <div class="card-stats">12 saved jobs</div>
+                        <div class="card-action">View All</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // You can replace this with actual user data from your backend
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample username - this would normally come from your authentication system
+            const user = {
+                name: "Rahul"
+            };
+            
+            // Set username in the navigation bar
+            document.getElementById('username').textContent = user.name;
+            
+            // Add any other dashboard functionality here
+        });
+    </script>
+</body>
+</html>
