@@ -40,6 +40,13 @@
             </button>
             <button class="login-btn" id="login-btn" data-en="Login" data-hi="लॉगिन">Login</button>
             <button class="signup-btn" id="signup-btn" data-en="Sign Up" data-hi="रजिस्टर करें">Sign Up</button>
+            <span id="user-greeting" style="display:none; margin-left:1rem;">
+                <i class="fas fa-user"></i> <span id="user-name"></span>
+              </span>
+              <button id="logout-btn" class="secondary-btn" style="display:none; margin-left:0.5rem;">
+                Logout
+              </button>
+              </div>
         </div>
     </nav>
     <section class="RozgaarSetu">
@@ -141,44 +148,24 @@
     <!-- Login Modal -->
     <div class="modal" id="login-modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 data-en="Login to RozgaarSetu" data-hi="रोज़गारसेतु में लॉगिन करें">Login to RozgaarSetu</h2>
-            <div class="tab-container">
-                <div class="tabs">
-                    <button class="tab-btn active" data-tab="worker-login" data-en="Worker" data-hi="कार्यकर्ता">Worker</button>
-                    <button class="tab-btn" data-tab="customer-login" data-en="Customer" data-hi="ग्राहक">Customer</button>
-                </div>
-                <div class="tab-content active" id="worker-login">
-                    <form id="worker-login-form">
-                        <div class="form-group">
-                            <label for="worker-phone" data-en="Mobile Number" data-hi="मोबाइल नंबर">Mobile Number</label>
-                            <input type="tel" id="worker-phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="worker-password" data-en="Password" data-hi="पासवर्ड">Password</label>
-                            <input type="password" id="worker-password" required>
-                        </div>
-                        <button type="submit" class="primary-btn" data-en="Login" data-hi="लॉगिन">Login</button>
-                    </form>
-                    <p class="form-footer" data-en="Don't have an account? " data-hi="खाता नहीं है? <a href='#' id='worker-signup-link'>रजिस्टर करें</a>">Don't have an account? <a href="#" id="worker-signup-link">Sign up</a></p>
-                </div>
-                <div class="tab-content" id="customer-login">
-                    <form id="customer-login-form">
-                        <div class="form-group">
-                            <label for="customer-email" data-en="Email Address" data-hi="ईमेल पता">Email Address</label>
-                            <input type="email" id="customer-email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="customer-password" data-en="Password" data-hi="पासवर्ड">Password</label>
-                            <input type="password" id="customer-password" required>
-                        </div>
-                        <button type="submit" class="primary-btn" data-en="Login" data-hi="लॉगिन">Login</button>
-                    </form>
-                    <p class="form-footer" data-en="Don't have an account? " data-hi="खाता नहीं है? <a href='#' id='customer-signup-link'>रजिस्टर करें</a>">Don't have an account? <a href="#" id="customer-signup-link">Sign up</a></p>
-                </div>
+          <span class="close-modal">&times;</span>
+          <h2 data-en="Login to RozgaarSetu" data-hi="रोज़गारसेतु में लॉगिन करें">Login to RozgaarSetu</h2>
+          <form id="login-form">
+            <div class="form-group">
+              <label for="login-email" data-en="Email" data-hi="ईमेल">Email</label>
+              <input type="email" id="login-email" required>
             </div>
+            <div class="form-group">
+              <label for="login-password" data-en="Password" data-hi="पासवर्ड">Password</label>
+              <input type="password" id="login-password" required>
+            </div>
+            <button type="submit" class="primary-btn" data-en="Login" data-hi="लॉगिन">Login</button>
+          </form>
+          <p data-en="Don't have an account?" data-hi="खाता नहीं है?">
+            <a href="#" id="show-signup"> Sign up</a>
+          </p>
         </div>
-    </div>
+      </div>
 
     <!-- About Us Modal -->
 <div class="modal" id="about-modal">
@@ -203,65 +190,28 @@
     <!-- Signup Modal -->
     <div class="modal" id="signup-modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 data-en="Sign Up for RozgaarSetu" data-hi="रोज़गारसेतु के लिए रजिस्टर करें">Sign Up for RozgaarSetu</h2>
-            <div class="tab-container">
-                <div class="tabs">
-                    <button class="tab-btn active" data-tab="worker-signup" data-en="Worker" data-hi="कार्यकर्ता">Worker</button>
-                    <button class="tab-btn" data-tab="customer-signup" data-en="Customer" data-hi="ग्राहक">Customer</button>
-                </div>
-                <div class="tab-content active" id="worker-signup">
-                    <form id="worker-signup-form">
-                        <div class="form-group">
-                            <label for="worker-signup-name" data-en="Full Name" data-hi="पूरा नाम">Full Name</label>
-                            <input type="text" id="worker-signup-name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="worker-signup-phone" data-en="Mobile Number" data-hi="मोबाइल नंबर">Mobile Number</label>
-                            <input type="tel" id="worker-signup-phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="worker-signup-skills" data-en="Skills" data-hi="कौशल">Skills</label>
-                            <select id="worker-signup-skills" multiple>
-                                <option value="construction" data-en="Construction" data-hi="निर्माण">Construction</option>
-                                <option value="cleaning" data-en="Cleaning" data-hi="सफाई">Cleaning</option>
-                                <option value="plumbing" data-en="Plumbing" data-hi="प्लंबिंग">Plumber</option>
-                                <option value="electrician" data-en="Electrician" data-hi="विद्युत">Electrician</option>
-                                <option value="carpenter" data-en="Carpenter" data-hi="बढ़ईगीरी">Carpenter</option>
-                                <option value="painter" data-en="Paint" data-hi="पेंटिंग">Painter</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="worker-signup-password" data-en="Password" data-hi="पासवर्ड">Password</label>
-                            <input type="password" id="worker-signup-password" required>
-                        </div>
-                        <button type="submit" class="primary-btn" data-en="Sign Up" data-hi="रजिस्टर करें">Sign Up</button>
-                    </form>
-                </div>
-                <div class="tab-content" id="customer-signup">
-                    <form id="customer-signup-form">
-                        <div class="form-group">
-                            <label for="customer-signup-name" data-en="Full Name" data-hi="पूरा नाम">Full Name</label>
-                            <input type="text" id="customer-signup-name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="customer-signup-email" data-en="Email Address" data-hi="ईमेल पता">Email Address</label>
-                            <input type="email" id="customer-signup-email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="customer-signup-phone" data-en="Mobile Number" data-hi="मोबाइल नंबर">Mobile Number</label>
-                            <input type="tel" id="customer-signup-phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="customer-signup-password" data-en="Password" data-hi="पासवर्ड">Password</label>
-                            <input type="password" id="customer-signup-password" required>
-                        </div>
-                        <button type="submit" class="primary-btn" data-en="Sign Up" data-hi="रजिस्टर करें">Sign Up</button>
-                    </form>
-                </div>
+          <span class="close-modal">&times;</span>
+          <h2 data-en="Sign Up for RozgaarSetu" data-hi="रोज़गारसेतु के लिए रजिस्टर करें">
+            Sign Up for RozgaarSetu
+          </h2>
+          <form id="signup-form">
+            <div class="form-group">
+              <label for="signup-email" data-en="Email" data-hi="ईमेल">Email</label>
+              <input type="email" id="signup-email" required>
             </div>
+            <div class="form-group">
+              <label for="signup-password" data-en="Password" data-hi="पासवर्ड">Password</label>
+              <input type="password" id="signup-password" required>
+            </div>
+            <button type="submit" class="primary-btn" data-en="Sign Up" data-hi="रजिस्टर करें">
+              Sign Up
+            </button>
+          </form>
+          <p data-en="Already have an account?" data-hi="पहले से खाता है?">
+            <a href="#" id="show-login"> Login</a>
+          </p>
         </div>
-    </div>
+      </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -348,6 +298,95 @@
             });
         });
         </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              // Nav elements
+              const loginBtn    = document.getElementById('login-btn');
+              const signupBtn   = document.getElementById('signup-btn');
+              const logoutBtn   = document.getElementById('logout-btn');
+              const userGreeting= document.getElementById('user-greeting');
+              const userName    = document.getElementById('user-name');
+            
+              // Modals & form links
+              const loginModal  = document.getElementById('login-modal');
+              const signupModal = document.getElementById('signup-modal');
+              const closeBtns   = document.querySelectorAll('.close-modal');
+              const showSignup  = document.getElementById('show-signup');
+              const showLogin   = document.getElementById('show-login');
+            
+              // Forms
+              const signupForm  = document.getElementById('signup-form');
+              const loginForm   = document.getElementById('login-form');
+            
+              // --- 1) Check on load: is user already logged in? ---
+              const savedEmail = localStorage.getItem('rs_user_email');
+              if (savedEmail) {
+                // hide Login/Sign-Up, show greeting + Logout
+                loginBtn.style.display    = signupBtn.style.display = 'none';
+                userName.textContent      = savedEmail;
+                userGreeting.style.display = 'inline-block';
+                logoutBtn.style.display    = 'inline-block';
+              }
+            
+              // --- 2) Logout clears storage + reload ---
+              logoutBtn.addEventListener('click', () => {
+                localStorage.removeItem('rs_user_email');
+                localStorage.removeItem('rs_user_pwd');
+                window.location.reload();
+              });
+            
+              // --- 3) Modal open/close logic (unchanged) ---
+              loginBtn.addEventListener('click',  () => { signupModal.style.display='none'; loginModal.style.display='block'; });
+              signupBtn.addEventListener('click', () => { loginModal.style.display='none'; signupModal.style.display='block'; });
+              showSignup.addEventListener('click', e => { e.preventDefault(); loginModal.style.display='none'; signupModal.style.display='block'; });
+              showLogin.addEventListener('click',  e => { e.preventDefault(); signupModal.style.display='none'; loginModal.style.display='block'; });
+              closeBtns.forEach(btn => btn.addEventListener('click', () => {
+                loginModal.style.display = signupModal.style.display = 'none';
+              }));
+              window.addEventListener('click', e => {
+                if (e.target === loginModal)  loginModal.style.display='none';
+                if (e.target === signupModal) signupModal.style.display='none';
+              });
+            
+              // --- 4) Sign-Up: store then immediately log in on homepage ---
+              signupForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const email = document.getElementById('signup-email').value.trim();
+                const pwd   = document.getElementById('signup-password').value;
+                if (!email || !pwd) return alert('Please fill in both fields');
+                localStorage.setItem('rs_user_email', email);
+                localStorage.setItem('rs_user_pwd', pwd);
+                // update nav UI
+                signupModal.style.display = 'none';
+                loginBtn.style.display    = signupBtn.style.display = 'none';
+                userName.textContent      = email;
+                userGreeting.style.display = 'inline-block';
+                logoutBtn.style.display    = 'inline-block';
+              });
+            
+              // --- 5) Login: verify and then update homepage UI ---
+              loginForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value.trim();
+                const pwd   = document.getElementById('login-password').value;
+                if (
+                  email === localStorage.getItem('rs_user_email') &&
+                  pwd   === localStorage.getItem('rs_user_pwd')
+                ) {
+                  loginModal.style.display = 'none';
+                  loginBtn.style.display   = signupBtn.style.display = 'none';
+                  userName.textContent      = email;
+                  userGreeting.style.display = 'inline-block';
+                  logoutBtn.style.display    = 'inline-block';
+                } else {
+                  alert('Invalid credentials');
+                }
+              });
+            });
+            </script>
+            
+            
+            
         
 </body>
 </html>
