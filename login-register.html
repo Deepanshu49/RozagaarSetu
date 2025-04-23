@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RozgaarSetu - Login/Register</title>
+    <link rel="stylesheet" href="login-register-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/api/placeholder/50/50" alt="RozgaarSetu Logo">
+                <span class="logo-text" data-en="RozgaarSetu" data-hi="रोज़गारसेतु">RozgaarSetu</span>
+            </a>
+        </div>
+        
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html" data-en="Home" data-hi="होम">Home</a></li>
+                <li><a href="services.html" data-en="Services" data-hi="सेवाएं">Services</a></li>
+                <li><a href="about.html" data-en="About Us" data-hi="हमारे बारे में">About Us</a></li>
+                <li><a href="contact.html" data-en="Contact" data-hi="संपर्क करें">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-buttons">
+            <button class="language-btn" id="language-toggle">
+                <i class="fas fa-globe"></i> <span data-en="हिंदी" data-hi="English">हिंदी</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="auth-container">
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login" data-en="Login" data-hi="लॉगिन">Login</button>
+                <button class="tab-btn" data-tab="register" data-en="Register" data-hi="रजिस्टर">Register</button>
+            </div>
+
+            <!-- Login Section -->
+            <div class="tab-content active" id="login">
+                <div class="user-type-selector">
+                    <button class="user-type-btn active" data-user-type="worker" data-en="Worker" data-hi="कार्यकर्ता">
+                        <i class="fas fa-hard-hat"></i> Worker
+                    </button>
+                    <button class="user-type-btn" data-user-type="customer" data-en="Customer" data-hi="ग्राहक">
+                        <i class="fas fa-user"></i> Customer
+                    </button>
+                </div>
+
+                <!-- Worker Login Form -->
+                <form id="worker-login-form" class="auth-form active">
+                    <h2 data-en="Worker Login" data-hi="कार्यकर्ता लॉगिन">Worker Login</h2>
+                    <div class="form-group">
+                        <label for="worker-login-phone" data-en="Mobile Number" data-hi="मोबाइल नंबर">Mobile Number</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="worker-login-phone" placeholder="Enter your mobile number" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="worker-login-password" data-en="Password" data-hi="पासवर्ड">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="worker-login-password" placeholder="Enter your password" required>
+                            <i class="fas fa-eye toggle-password"></i>
+                        </div>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#" data-en="Forgot Password?" data-hi="पासवर्ड भूल गए?">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="primary-btn" data-en="Login" data-hi="लॉगिन">Login</button>
+                    <div class="form-footer">
+                        <p data-en="Don't have an account?" data-hi="खाता नहीं है?">Don't have an account? <a href="#" class="switch-to-register" data-en="Register Now" data-hi="अभी रजिस्टर करें">Register Now</a></p>
+                    </div>
+                </form>
+
+                <!-- Customer Login Form -->
+                <form id="customer-login-form" class="auth-form">
+                    <h2 data-en="Customer Login" data-hi="ग्राहक लॉगिन">Customer Login</h2>
+                    <div class="form-group">
+                        <label for="customer-login-email" data-en="Email Address" data-hi="ईमेल पता">Email Address</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="customer-login-email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-login-password" data-en="Password" data-hi="पासवर्ड">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="customer-login-password" placeholder="Enter your password" required>
+                            <i class="fas fa-eye toggle-password"></i>
+                        </div>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#" data-en="Forgot Password?" data-hi="पासवर्ड भूल गए?">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="primary-btn" data-en="Login" data-hi="लॉगिन">Login</button>
+                    <div class="form-footer">
+                        <p data-en="Don't have an account?" data-hi="खाता नहीं है?">Don't have an account? <a href="#" class="switch-to-register" data-en="Register Now" data-hi="अभी रजिस्टर करें">Register Now</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Register Section -->
+            <div class="tab-content" id="register">
+                <div class="user-type-selector">
+                    <button class="user-type-btn active" data-user-type="worker" data-en="Worker" data-hi="कार्यकर्ता">
+                        <i class="fas fa-hard-hat"></i> Worker
+                    </button>
+                    <button class="user-type-btn" data-user-type="customer" data-en="Customer" data-hi="ग्राहक">
+                        <i class="fas fa-user"></i> Customer
+                    </button>
+                </div>
+
+                <!-- Worker Registration Form -->
+                <form id="worker-register-form" class="auth-form active">
+                    <h2 data-en="Worker Registration" data-hi="कार्यकर्ता पंजीकरण">Worker Registration</h2>
+                    <div class="form-group">
+                        <label for="worker-register-name" data-en="Full Name" data-hi="पूरा नाम">Full Name</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="worker-register-name" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="worker-register-phone" data-en="Mobile Number" data-hi="मोबाइल नंबर">Mobile Number</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="worker-register-phone" placeholder="Enter your mobile number" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="worker-register-skills" data-en="Skills" data-hi="कौशल">Skills</label>
+                        <div class="skill-checkboxes">
+                            <div class="skill-checkbox">
+                                <input type="checkbox" id="skill-construction" value="construction">
+                                <label for="skill-construction" data-en="Construction" data-hi="निर्माण">Construction</label>
+                            </div>
+                            <div class="skill-checkbox">
+                                <input type="checkbox" id="skill-cleaning" value="cleaning">
+                                <label for="skill-cleaning" data-en="Cleaning" data-hi="सफाई">Cleaning</label>
+                            </div>
+                            <div class="skill-checkbox">
+                                <input type="checkbox" id="skill-plumbing" value="plumbing">
+                                <label for="skill-plumbing" data-en="Plumbing" data-hi="प्लंबिंग">Plumbing</label>
+                            </div>
+                            <div class="skill-checkbox">
+                                <input type="checkbox" id="skill-electrical" value="electrical">
+                                <label for="skill-electrical" data-en="Electrical" data-hi="विद्युत">Electrical</label>
+                            </div>
+                            <div class="skill-checkbox">
+                                <input type="checkbox" id="skill-carpentry" value="carpentry">
+                                <label for="skill-carpentry" data-en="Carpentry" data-hi="बढ़ईगीरी">Carpentry</label>
+                            </div>
+                            <div class="skill-checkbox">
+                                <input type="checkbox" id="skill-painting" value="painting">
+                                <label for="skill-painting" data-en="Painting" data-hi="पेंटिंग">Painting</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="worker-register-password" data-en="Password" data-hi="पासवर्ड">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="worker-register-password" placeholder="Create a password" required>
+                            <i class="fas fa-eye toggle-password"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="worker-register-confirm-password" data-en="Confirm Password" data-hi="पासवर्ड की पुष्टि करें">Confirm Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="worker-register-confirm-password" placeholder="Confirm your password" required>
+                            <i class="fas fa-eye toggle-password"></i>
+                        </div>
+                    </div>
+                    <div class="terms-checkbox">
+                        <input type="checkbox" id="worker-terms" required>
+                        <label for="worker-terms" data-en="I agree to the <a href='#'>Terms & Conditions</a>" data-hi="मैं <a href='#'>नियम और शर्तों</a> से सहमत हूं">I agree to the <a href="#">Terms & Conditions</a></label>
+                    </div>
+                    <button type="submit" class="primary-btn" data-en="Register" data-hi="रजिस्टर करें">Register</button>
+                    <div class="form-footer">
+                        <p data-en="Already have an account?" data-hi="पहले से खाता है?">Already have an account? <a href="#" class="switch-to-login" data-en="Login" data-hi="लॉगिन करें">Login</a></p>
+                    </div>
+                </form>
+
+                <!-- Customer Registration Form -->
+                <form id="customer-register-form" class="auth-form">
+                    <h2 data-en="Customer Registration" data-hi="ग्राहक पंजीकरण">Customer Registration</h2>
+                    <div class="form-group">
+                        <label for="customer-register-name" data-en="Full Name" data-hi="पूरा नाम">Full Name</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="customer-register-name" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-register-email" data-en="Email Address" data-hi="ईमेल पता">Email Address</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="customer-register-email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-register-phone" data-en="Mobile Number" data-hi="मोबाइल नंबर">Mobile Number</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="customer-register-phone" placeholder="Enter your mobile number" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-register-password" data-en="Password" data-hi="पासवर्ड">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="customer-register-password" placeholder="Create a password" required>
+                            <i class="fas fa-eye toggle-password"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-register-confirm-password" data-en="Confirm Password" data-hi="पासवर्ड की पुष्टि करें">Confirm Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="customer-register-confirm-password" placeholder="Confirm your password" required>
+                            <i class="fas fa-eye toggle-password"></i>
+                        </div>
+                    </div>
+                    <div class="terms-checkbox">
+                        <input type="checkbox" id="customer-terms" required>
+                        <label for="customer-terms" data-en="I agree to the <a href='#'>Terms & Conditions</a>" data-hi="मैं <a href='#'>नियम और शर्तों</a> से सहमत हूं">I agree to the <a href="#">Terms & Conditions</a></label>
+                    </div>
+                    <button type="submit" class="primary-btn" data-en="Register" data-hi="रजिस्टर करें">Register</button>
+                    <div class="form-footer">
+                        <p data-en="Already have an account?" data-hi="पहले से खाता है?">Already have an account? <a href="#" class="switch-to-login" data-en="Login" data-hi="लॉगिन करें">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-en="RozgaarSetu" data-hi="रोज़गारसेतु">RozgaarSetu</h3>
+                <p data-en="Connecting workers with opportunities" data-hi="कार्यकर्ताओं को अवसरों से जोड़ना">Connecting workers with opportunities</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-en="Quick Links" data-hi="त्वरित लिंक">Quick Links</h3>
+                <ul>
+                    <li><a href="about.html" data-en="About Us" data-hi="हमारे बारे में">About Us</a></li>
+                    <li><a href="services.html" data-en="Services" data-hi="सेवाएं">Services</a></li>
+                    <li><a href="privacy.html" data-en="Privacy Policy" data-hi="गोपनीयता नीति">Privacy Policy</a></li>
+                    <li><a href="terms.html" data-en="Terms of Service" data-hi="सेवा की शर्तें">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-en="Contact Us" data-hi="संपर्क करें">Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> <span data-en="Email" data-hi="ईमेल">Email</span>: info@rozgaarsetu.com</p>
+                <p><i class="fas fa-phone"></i> <span data-en="Phone" data-hi="फोन">Phone</span>: +91 1234567890</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-en="Follow Us" data-hi="हमें फॉलो करें">Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-en="&copy; 2025 RozgaarSetu. All rights reserved." data-hi="&copy; 2025 रोज़गारसेतु. सर्वाधिकार सुरक्षित.">&copy; 2025 RozgaarSetu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="login-register-scripts.js"></script>
+</body>
+</html>
