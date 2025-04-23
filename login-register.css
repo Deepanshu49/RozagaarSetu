@@ -1,0 +1,260 @@
+/* Login & Register Page Specific Styles */
+:root {
+    --primary-color: #359381;
+    --dark-color: #003329;
+    --text-color: #333;
+    --border-radius: 6px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+.main-content {
+    background-color: #f8f9fa;
+    padding: 40px 0 60px;
+}
+
+/* Auth Container */
+.auth-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.auth-form-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    padding: 30px;
+    margin-top: 40px;
+}
+
+.auth-title {
+    font-size: 24px;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form Styles */
+.auth-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 15px;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(53, 147, 129, 0.2);
+}
+
+/* Password Input with Toggle */
+.password-input-container {
+    position: relative;
+}
+
+.password-input-container input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    transition: var(--transition);
+}
+
+.toggle-password:hover {
+    color: var(--primary-color);
+}
+
+/* Error Messages */
+.error-message {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.forgot-password a {
+    color: var(--primary-color);
+    font-size: 14px;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Form Footer */
+.form-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 15px;
+}
+
+.form-footer a {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Tab Styles */
+.tab-container {
+    margin-bottom: 20px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-btn {
+    padding: 12px 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #777;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Button Styles */
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    margin-top: 10px;
+}
+
+.primary-btn:hover {
+    background-color: #2a7363;
+    transform: translateY(-2px);
+}
+
+/* Skills Selection Styles */
+.skills-group select {
+    height: 120px;
+}
+
+.helper-text {
+    display: block;
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .auth-form-container {
+        padding: 20px;
+    }
+    
+    .tabs {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+    .tab-btn {
+        padding: 10px 15px;
+        font-size: 14px;
+        flex: 1;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-title {
+        font-size: 20px;
+    }
+    
+    .form-group label {
+        font-size: 14px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        padding: 10px 12px;
+    }
+    
+    .primary-btn {
+        padding: 10px;
+    }
+}
+
+/* Active nav button style */
+.nav-buttons .login-btn.active {
+    background-color: #e6f2ff;
+    color: var(--primary-color);
+}
+
+.nav-buttons .signup-btn.active {
+    background-color: #2a7363;
+}

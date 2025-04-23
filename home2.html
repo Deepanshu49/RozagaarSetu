@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RozgaarSetu - Connecting Workers and Employers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #1e40af;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #fbbf24;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fbbf24;
+        }
+
+        .auth-btn {
+            background-color: #fbbf24;
+            color: #1e3a8a;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .auth-btn:hover {
+            background-color: #f59e0b;
+        }
+
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+            background-color: #1e40af;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #e5e7eb;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .features {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: #1e40af;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #1e40af;
+        }
+
+        .categories {
+            padding: 4rem 0;
+            background-color: #f1f5f9;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background-color: white;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card img {
+            max-width: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .category-card h3 {
+            margin-bottom: 0.5rem;
+            color: #1e40af;
+        }
+
+        .how-it-works {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #1e40af;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            margin-bottom: 0.5rem;
+            color: #1e40af;
+        }
+
+        footer {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #fbbf24;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a {
+            color: #e5e7eb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #fbbf24;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e5e7eb;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: modalFadeIn 0.3s;
+        }
+
+        @keyframes modalFadeIn {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .tab-container {
+            margin-top: 1rem;
+        }
+
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.5rem;
+            text-align: center;
+            background-color: #f1f5f9;
+            cursor: pointer;
+            border: none;
+        }
+
+        .tab-btn.active {
+            background-color: #1e40af;
+            color: white;
+        }
+
+        .tab-btn:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .tab-btn:last-child {
+            border-radius: 0 4px 4px 0;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #1e40af;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #1e40af;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #1e3a8a;
+        }
+
+        .role-selection {
+            margin-bottom: 1rem;
+        }
+
+        .role-selection label {
+            margin-right: 1rem;
+        }
+
+        .dashboard {
+            display: none;
+            padding: 2rem 0;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-text {
+            font-size: 1.5rem;
+        }
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .dashboard-card h3 {
+            margin-bottom: 1rem;
+            color: #1e40af;
+        }
+
+        .worker-list {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .worker-item {
+            display: flex;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .worker-item:last-child {
+            border-bottom: none;
+        }
+
+        .worker-info {
+            flex: 1;
+        }
+
+        .worker-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .worker-category {
+            color: #4b5563;
+            font-size: 0.9rem;
+        }
+
+        .worker-rating {
+            color: #f59e0b;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+
+        .contact-btn {
+            background-color: #1e40af;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #1e3a8a;
+        }
+
+        .job-list {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .job-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .job-item:last-child {
+            border-bottom: none;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-title {
+            font-weight: 600;
+        }
+
+        .job-rate {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .job-location {
+            color: #4b5563;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-posted {
+            color: #6b7280;
+            font-size: 0.8rem;
+        }
+
+        .apply-btn {
+            background-color: #1e40af;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .apply-btn:hover {
+            background-color: #1e3a8a;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features-grid, .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Rozgaar<span>Setu</span></div>
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#categories">Categories</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#about">About Us</a>
+            </nav>
+            <button class="auth-btn" id="openAuthModal">Login / Sign Up</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Connecting Workers with Opportunities</h1>
+            <p>RozgaarSetu brings together skilled workers and those who need their services in a simple, efficient platform.</p>
+            <div class="hero-btns">
+                <button class="auth-btn" id="workerSignUp">Register as Worker</button>
+                <button class="auth-btn" id="employerSignUp">Find Workers</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose RozgaarSetu?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Simple Registration</h3>
+                    <p>Register easily with just your phone number and password - no complex documents needed.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Quick Connections</h3>
+                    <p>Find workers or jobs in your area within minutes, saving time and effort.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Verified Workers</h3>
+                    <p>All workers on our platform are verified to ensure safety and quality of service.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Fair Opportunities</h3>
+                    <p>Workers get paid fairly for their skills without middlemen taking cuts.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Rating System</h3>
+                    <p>Rate and review workers or employers to build a trusted community.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Local Focus</h3>
+                    <p>Connect with workers and opportunities in your local area for convenience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Worker Categories</h2>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <img src="/api/placeholder/80/80" alt="Plumbing">
+                    <h3>Plumbers</h3>
+                    <p>Expert plumbing services</p>
+                </div>
+                <div class="category-card">
+                    <img src="/api/placeholder/80/80" alt="Electrician">
+                    <h3>Electricians</h3>
+                    <p>Skilled electrical work</p>
+                </div>
+                <div class="category-card">
+                    <img src="/api/placeholder/80/80" alt="House Help">
+                    <h3>House Help</h3>
+                    <p>Domestic assistance</p>
+                </div>
+                <div class="category-card">
+                    <img src="/api/placeholder/80/80" alt="Construction">
+                    <h3>Construction</h3>
+                    <p>Building and labor</p>
+                </div>
+                <div class="category-card">
+                    <img src="/api/placeholder/80/80" alt="Gardening">
+                    <h3>Gardeners</h3>
+                    <p>Garden maintenance</p>
+                </div>
+                <div class="category-card">
+                    <img src="/api/placeholder/80/80" alt="Painting">
+                    <h3>Painters</h3>
+                    <p>Professional painting</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How RozgaarSetu Works</h2>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Register</h3>
+                    <p>Sign up as a worker or employer with your phone number and password.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Create Profile</h3>
+                    <p>Workers: Add your skills and availability. Employers: Specify your requirements.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Connect</h3>
+                    <p>Browse and connect with workers or employers that match your needs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Work & Pay</h3>
+                    <p>Complete the work and handle payment directly between worker and employer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About RozgaarSetu</h2>
+            </div>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; margin-bottom: 2rem;">
+                RozgaarSetu is a platform dedicated to empowering daily wage workers by connecting them directly with potential employers. Our mission is to create fair employment opportunities and eliminate exploitation by middlemen, ensuring workers receive the full value of their skills and labor.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h3>RozgaarSetu</h3>
+                <p>Connecting skilled workers with those who need their services.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For Workers</h3>
+                <ul>
+                    <li><a href="#">Register as Worker</a></li>
+                    <li><a href="#">How to Get Jobs</a></li>
+                    <li><a href="#">Safety Tips</a></li>
+                    <li><a href="#">Payment Guidelines</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For Employers</h3>
+                <ul>
+                    <li><a href="#">Find Workers</a></li>
+                    <li><a href="#">Posting Guidelines</a></li>
+                    <li><a href="#">Verification Process</a></li>
+                    <li><a href="#">Rating System</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2025 RozgaarSetu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Welcome to RozgaarSetu</h2>
+            
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="login">Login</button>
+                    <button class="tab-btn" data-tab="signup">Sign Up</button>
+                </div>
+                
+                <!-- Login Tab -->
+                <div class="tab-content active" id="login">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginPhone">Phone Number</label>
+                            <input type="tel" id="loginPhone" pattern="[0-9]{10}" required placeholder="Enter your 10-digit phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" required placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="submit-btn">Login</button>
+                    </form>
+                </div>
+                
+                <!-- Sign Up Tab -->
+                <div class="tab-content" id="signup">
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label for="signupPhone">Phone Number</label>
+                            <input type="tel" id="signupPhone" pattern="[0-9]{10}" required placeholder="Enter your 10-digit phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="signupPassword">Password</label>
+                            <input type="password" id="signupPassword" required placeholder="Create a password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" required placeholder="Confirm your password">
+                        </div>
+                        <div class="form-group">
+                            <label>Register as:</label>
+                            <div class="role-selection">
+                                <input type="radio" id="roleWorker" name="role" value="worker" checked>
+                                <label for="roleWorker">Worker</label>
+                                <input type="radio" id="roleEmployer" name="role" value="employer">
+                                <label for="roleEmployer">Employer</label>
+                            </div>
+                        </div>
+                        <div class="form-group" id="workerCategoryGroup">
+                            <label for="workerCategory">Select your category</label>
+                            <select id="workerCategory">
+                                <option value="">Select a category</option>
+                                <option value="plumber">Plumber</option>
+                                <option value="electrician">Electrician</option>
+                                <option value="househelp">House Help</option>
+                                <option value="construction">Construction Worker</option>
+                                <option value="gardener">Gardener</option>
+                                <option value="painter">Painter</option>
+                                <option value="carpenter">Carpenter</option>
+                                <option value="cleaner">Cleaner</option>
+                                <option value="driver">Driver</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Worker Dashboard -->
+    <div class="dashboard" id="workerDashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <div class="welcome-text">Welcome, <span id="workerName">Worker</span></div>
+                <button class="auth-btn" id="workerLogout">Logout</button>
+            </div>
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <h3>Profile Status</h3>
+                    <p>Category: <span id="workerCategoryDisplay">Loading...</span></p>
+                    <p>Verification: <span id="verificationStatus">Pending</span></p>
+                    <p>Rating: <span id="workerRating">New</span></p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>This Week</h3>
+                    <p>Job Applications: <strong>5</strong></p>
+                    <p>Jobs Completed: <strong>3</strong></p>
+                    <p>Earnings: <strong>₹2,500</strong></p>
+                </div>
+            </div>
+            <h2>Available Jobs</h2>
+            <div class="job-list">
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="job-title">Plumbing Work Needed</div>
+                        <div class="job-rate">₹500/day</div>
+                    </div>
+                    <div class="job-location">Andheri East, Mumbai</div>
+                    <div class="job-posted">Posted 2 hours ago</div>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="job-title">Bathroom Repairs</div>
+                        <div class="job-rate">₹600/day</div>
+                    </div>
+                    <div class="job-location">Powai, Mumbai</div>
+                    <div class="job-posted">Posted 5 hours ago</div>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="job-title">Kitchen Sink Installation</div>
+                        <div class="job-rate">₹450/job</div>
+                    </div>
+                    <div class="job-location">Dadar, Mumbai</div>
+                    <div class="job-posted">Posted 1 day ago</div>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Employer Dashboard -->
+    <div class="dashboard" id="employerDashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <div class="welcome-text">Welcome, <span id="employerName">Employer</span></div>
+                <button class="auth-btn" id="employerLogout">Logout</button>
+            </div>
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <h3>Quick Stats</h3>
+                    <p>Jobs Posted: <strong>2</strong></p>
+                    <p>Hires Made: <strong>5</strong></p>
+                    <p>Active Listings: <strong>1</strong></p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Post a New Job</h3>
+                    <form id="postJobForm">
+                        <div class="form-group">
+                            <label for="jobTitle">Job Title</label>
+                            <input type="text" id="jobTitle" required placeholder="E.g., Plumbing Work">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobCategory">Category</label>
+                            <select id="jobCategory" required>
+                                <option value="">Select a category</option>
+                                <option value="plumber">Plumber</option>
+                                <option value="electrician">Electrician</option>
+                                <option value="househelp">House Help</option>
+                                <option value="construction">Construction Worker</option>
+                                <option value="gardener">Gardener</option>
+                                <option value="painter">Painter</option>
+                                <option value="carpenter">Carpenter</option>
+                                <option value="cleaner">Cleaner</option>
+                                <option value="driver">Driver</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
