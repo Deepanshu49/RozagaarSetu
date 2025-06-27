@@ -130,7 +130,7 @@ function translateText(text, targetLanguage) {
                 return englishText;
             }
         }
-        return text; // Return original if no translation found
+        return text; 
     }
 }
 
@@ -142,10 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check browser language if no saved preference
     const browserLanguage = navigator.language || navigator.userLanguage;
     
-    // Set default language (Hindi if browser language starts with 'hi', otherwise English)
+    
     const defaultLanguage = savedLanguage || (browserLanguage.startsWith('hi') ? 'hi' : 'en');
     
-    // Apply the language
+   
     translateWebsite(defaultLanguage);
     
     // Set up language toggle button

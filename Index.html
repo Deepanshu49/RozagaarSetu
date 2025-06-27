@@ -38,7 +38,10 @@
             <button class="language-btn" id="language-toggle">
                 <i class="fas fa-globe"></i> <span data-en="हिंदी" data-hi="English">हिंदी</span>
             </button>
-            <button class="login-btn" id="login-btn" data-en="Login" data-hi="लॉगिन">Login</button>
+            <form action="login-register.html">
+
+                <button type="submit" class="login-btn" id="login-btn" data-en="Login" data-hi="लॉगिन">Login</button>
+            </form>
             <button class="signup-btn" id="signup-btn" data-en="Sign Up" data-hi="रजिस्टर करें">Sign Up</button>
             <span id="user-greeting" style="display:none; margin-left:1rem;">
                 <i class="fas fa-user"></i> <span id="user-name"></span>
@@ -152,8 +155,8 @@
           <h2 data-en="Login to RozgaarSetu" data-hi="रोज़गारसेतु में लॉगिन करें">Login to RozgaarSetu</h2>
           <form id="login-form">
             <div class="form-group">
-              <label for="login-email" data-en="Email" data-hi="ईमेल">Email</label>
-              <input type="email" id="login-email" required>
+              <label for="login-Contact" data-en="Contact" data-hi="ईमेल">Contact</label>
+              <input type="Contact" id="login-Contact" required>
             </div>
             <div class="form-group">
               <label for="login-password" data-en="Password" data-hi="पासवर्ड">Password</label>
@@ -162,7 +165,7 @@
             <button type="submit" class="primary-btn" data-en="Login" data-hi="लॉगिन">Login</button>
           </form>
           <p data-en="Don't have an account?" data-hi="खाता नहीं है?">
-            <a href="#" id="show-signup"> Sign up</a>
+            <a href="login-register.html" id="show-signup"> Sign up</a>
           </p>
         </div>
       </div>
@@ -196,8 +199,8 @@
           </h2>
           <form id="signup-form">
             <div class="form-group">
-              <label for="signup-email" data-en="Email" data-hi="ईमेल">Email</label>
-              <input type="email" id="signup-email" required>
+              <label for="signup-Contact" data-en="Contact" data-hi="ईमेल">Contact</label>
+              <input type="Contact" id="signup-Contact" required>
             </div>
             <div class="form-group">
               <label for="signup-password" data-en="Password" data-hi="पासवर्ड">Password</label>
@@ -319,18 +322,18 @@
               const loginForm   = document.getElementById('login-form');
             
               // --- 1) Check on load: is user already logged in? ---
-              const savedEmail = localStorage.getItem('rs_user_email');
-              if (savedEmail) {
+              const savedContact = localStorage.getItem('rs_user_Contact');
+              if (savedContact) {
                 // hide Login/Sign-Up, show greeting + Logout
                 loginBtn.style.display    = signupBtn.style.display = 'none';
-                userName.textContent      = savedEmail;
+                userName.textContent      = savedContact;
                 userGreeting.style.display = 'inline-block';
                 logoutBtn.style.display    = 'inline-block';
               }
             
               // --- 2) Logout clears storage + reload ---
               logoutBtn.addEventListener('click', () => {
-                localStorage.removeItem('rs_user_email');
+                localStorage.removeItem('rs_user_Contact');
                 localStorage.removeItem('rs_user_pwd');
                 window.location.reload();
               });
@@ -351,15 +354,15 @@
               // --- 4) Sign-Up: store then immediately log in on homepage ---
               signupForm.addEventListener('submit', e => {
                 e.preventDefault();
-                const email = document.getElementById('signup-email').value.trim();
+                const Contact = document.getElementById('signup-Contact').value.trim();
                 const pwd   = document.getElementById('signup-password').value;
-                if (!email || !pwd) return alert('Please fill in both fields');
-                localStorage.setItem('rs_user_email', email);
+                if (!Contact || !pwd) return alert('Please fill in both fields');
+                localStorage.setItem('rs_user_Contact', Conact);
                 localStorage.setItem('rs_user_pwd', pwd);
                 // update nav UI
                 signupModal.style.display = 'none';
                 loginBtn.style.display    = signupBtn.style.display = 'none';
-                userName.textContent      = email;
+                userName.textContent      = Contact;
                 userGreeting.style.display = 'inline-block';
                 logoutBtn.style.display    = 'inline-block';
               });
@@ -367,15 +370,15 @@
               // --- 5) Login: verify and then update homepage UI ---
               loginForm.addEventListener('submit', e => {
                 e.preventDefault();
-                const email = document.getElementById('login-email').value.trim();
+                const Contact = document.getElementById('login-Contact').value.trim();
                 const pwd   = document.getElementById('login-password').value;
                 if (
-                  email === localStorage.getItem('rs_user_email') &&
+                  email === localStorage.getItem('rs_user_Contact') &&
                   pwd   === localStorage.getItem('rs_user_pwd')
                 ) {
                   loginModal.style.display = 'none';
                   loginBtn.style.display   = signupBtn.style.display = 'none';
-                  userName.textContent      = email;
+                  userName.textContent      = Contact;
                   userGreeting.style.display = 'inline-block';
                   logoutBtn.style.display    = 'inline-block';
                 } else {

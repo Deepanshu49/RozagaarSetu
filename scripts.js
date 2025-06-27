@@ -147,6 +147,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Get user location when relevant buttons are clicked
+
+
     const hireButton = document.querySelector('.hero-buttons .primary-btn');
     if (hireButton) {
         hireButton.addEventListener('click', function() {
